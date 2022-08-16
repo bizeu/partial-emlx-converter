@@ -82,13 +82,14 @@ export async function processEmlx(emlxFile: string, resultStream: Writable, igno
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function integrateAttachment(emlxFile: string, data: any): Promise<void> {
-  const attachmentDirectoryPath = path.join(
-    path.dirname(emlxFile),
-    '..',
-    'Attachments',
-    stripExtension(path.basename(emlxFile)),
-    data.node.partNr.join('.') // e.g. array [1, 1, 2]
-  );
+  // const attachmentDirectoryPath = path.join(
+  //   path.dirname(emlxFile),
+  //   '..',
+  //   'Attachments',
+  //   stripExtension(path.basename(emlxFile)),
+  //   data.node.partNr.join('.') // e.g. array [1, 1, 2]
+  // );
+  const attachmentDirectoryPath = path.join(path.dirname(emlxFile));
   // first try to get the name as explicitly specified in the email text
   // (this seems like the most reliable way), but if that does not work,
   // check the `Attachments` directory structure. See:
